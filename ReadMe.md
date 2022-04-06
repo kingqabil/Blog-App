@@ -1,24 +1,46 @@
-# README
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Blog-App
+The Blog app is a classic example of a blog website. Created a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
 
-Things you may want to cover:
+## Built With
 
-* Ruby version
+- Ruby
+- Ruby On Rails
 
-* System dependencies
+## To get a local copy run the following steps:
 
-* Configuration
+- Copy this link [this link](https://github.com/kingqabil/Blog-App)
+- Open your terminal or command line
+- Run "git clone Paste [this link](https://github.com/kingqabil/Blog-App)"
+- Open the folder with your code editor
 
-* Database creation
+## To run the tests
+- Add to the terminal `rspec spec spec/filename.rb`
 
-* Database initialization
+## To get started-:
 
-* How to run the test suite
+- Run `bundle install` or `bundle i` to install the dependencies
+- Run `rails s` to run the code!
+- Run `rubocop` to find and fix linters
 
-* Services (job queues, cache servers, search engines, etc.)
+👤 **SadiQ HabiL**
 
-* Deployment instructions
+- GitHub: [@kingqabil](https://github.com/kingqabil)
+- Twitter: [@kingqabil](https://twitter.com/kingqabil)
+- LinkedIn: [@kingqabil](https://linkedin.com/in/kingqabil)
 
-* ...
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/kingqabil/Blog-App/issues).
+
+## Acknowledgements
+
+- I would like to thank my code reviewers for their valuable feedback.
+- I would like to thank my learning partners and morning session members for their support.
+
+## Show your support
+
+Give a ⭐️ if you like this project!
