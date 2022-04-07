@@ -16,11 +16,19 @@ The Blog app is a classic example of a blog website. Created a fully functional 
 - Open the folder with your code editor
 
 ## To run the tests
-- Add to the terminal `rspec spec spec/filename.rb`
+
+Install rspec with:
+`bundle install`
+and
+`rails generate rpesc:install`
+
+Run tests with:
+`rspec spec`
 
 ## To get started-:
 
 - Run `bundle install` or `bundle i` to install the dependencies
+Run `rails new Project --database=postgresql` to create a new project with Postgresql database
 - Run `rails s` to run the code!
 - Run `rubocop` to find and fix linters
 
