@@ -73,7 +73,7 @@ end
 
 # Run against this stable release
 group :development, :test do
-  gem 'rspec-rails', '~> 5.1.1'
   gem 'rails-controller-testing'
   gem 'rspec', '~>3.0'
+  gem 'rspec-rails', '~> 5.1.1'
 end
