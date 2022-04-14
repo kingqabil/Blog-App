@@ -24,7 +24,7 @@ default: &default
 development:
   adapter: postgresql
   encoding: unicode
-  database: postgres
+  database: test
   host: localhost
   pool: 5
   username: postgres
