@@ -23,7 +23,7 @@ and
 `rails generate rpesc:install`
 
 Run tests with:
-`rspec spec`
+`rspec spec` , `rspec` or `bundle exec`
 
 ## To get started-:
 
