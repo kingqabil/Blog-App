@@ -12,7 +12,7 @@ gem 'rails', '~> 7.0.2'
 gem 'sprockets-rails'
 
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 1.1'
+gem 'pg', '~> 1.3', '>= 1.3.5'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
@@ -29,6 +29,7 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'bootstrap-sass'
 gem 'jbuilder'
+gem 'sassc', '~> 2.4'
 
 gem 'rails-controller-testing'
 gem 'rspec', '~>3.0'
