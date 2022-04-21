@@ -32,6 +32,15 @@ Run `rails new Project --database=postgresql` to create a new project with Postg
 - Run `rails s` to run the code!
 - Run `rubocop` to find and fix linters
 
+👤 **ATİLLA TAHA KÖRDÜĞÜM**
+
+- GitHub: [@AtillaTahak](https://github.com/AtillaTahak)
+- Twitter: [@AtillaTahaa](https://twitter.com/AtillaTahaa)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/atilla-taha-k%C3%B6rd%C3%BC%C4%9F%C3%BCm-a93702186/)
+- Blog: [Blog](https://github.com/AtillaTahak/school_library/blob/dev/atillataha.blogspot.com)
+- Youtube: [YouTube](https://www.youtube.com/channel/UCmoD0x4Z9vdG2PCsI5p8FYg)
+
+
 👤 **SadiQ HabiL**
 
 - GitHub: [@kingqabil](https://github.com/kingqabil)
