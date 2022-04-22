@@ -78,5 +78,4 @@ RSpec.describe 'Login', type: :feature do
     it 'When I click on a post, it redirects me to that post\'s show page.' do
       expect(page).to have_content 'Why people say HTML is not a programming language...'
     end
-  end
 end
