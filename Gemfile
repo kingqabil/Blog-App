@@ -33,6 +33,13 @@ gem 'rails-controller-testing'
 gem 'sassc', '~> 2.4'
 
 gem 'devise'
+gem 'rabl'
+gem 'rswag'
+# gem 'jbuilder', '~> 2.7'
+
+gem 'jsonapi-rails'
+
+gem 'devise-jwt'
 
 gem 'cancancan', '~> 3.3'
 
