@@ -29,13 +29,17 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'bootstrap-sass'
 gem 'jbuilder'
+gem 'rails-controller-testing'
 gem 'sassc', '~> 2.4'
 
-gem 'rails-controller-testing'
-gem 'rspec', '~>3.0'
-gem 'rspec-rails'
-
 gem 'devise'
+gem 'rabl'
+gem 'rswag'
+# gem 'jbuilder', '~> 2.7'
+
+gem 'jsonapi-rails'
+
+gem 'devise-jwt'
 
 gem 'cancancan', '~> 3.3'
 
@@ -62,7 +66,9 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'database_cleaner'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails'
 end
 
 group :development do

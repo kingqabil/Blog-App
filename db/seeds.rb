@@ -1,3 +1,4 @@
+# _string_literal: true
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -6,22 +7,31 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-#Add first batch of users
-first_user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
-second_user = User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.')
-third_user = User.create(name: 'Sadiq', photo: 'https://genericphoto.com/user1', bio: 'Programmer from Somalia')
-fourth_user = User.create(name: 'Adam', photo: 'https://genericphoto.com/user1', bio: 'Software developer from Taiwan')
-fifth_user = User.create(name: 'Somdotta', photo: 'https://genericphoto.com/user1', bio: 'Software developer from India')
+# user1 = User.create(name: "Ben", photo: "url", bio: "Hey my name is ben, I'm dev", posts_counter: 0)
+# user2 = User.create(name: "Taliah", photo: "url", bio: "Hey my name is Taliah", posts_counter: 0)
+# user3 = User.create(name: "Omar", photo: "url", bio: "Hey my name is Omar", posts_counter: 0)
+# user4 = User.create(name: "Deen", photo: "url", bio: "Hey my name is Deen", posts_counter: 0)
 
-post1 = Post.create( title: 'Hello', text: 'This is my first post', comments_counter: 0, likes_counter: 0, user_id: 1)
-post2 = Post.create( title: 'Hello', text: 'This is my second post', comments_counter: 0, likes_counter: 0, user_id: 2)
-post3 = Post.create( title: 'Hello', text: 'This is my third post', comments_counter: 0, likes_counter: 0, user_id: 3)
-post4 = Post.create( title: 'Hello', text: 'This is my fourth post', comments_counter: 0, likes_counter: 0, user_id: 4)
+# post1 = Post.create(user_id: 1, title: 'Cats and Dogs', text: 'Lorem ipsum dolor sit amet,
+# consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+#   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+#   comments_counter: 0, likes_counter: 0)
 
-comment1 = Comment.create(post_id: 1, user_id: 2, text: 'Hi Tom!' )
-comment2 = Comment.create(post_id: 2, user_id: 1, text: 'Hi Lilly!' )
-comment3 = Comment.create(post_id: 3, user_id: 4, text: 'Hi Sadiq!' )
-comment4 = Comment.create(post_id: 4, user_id: 3, text: 'Hi Adam!' )
+# post2 = Post.create(user_id: 2, title: 'Cats and Dogs', text: 'Lorem ipsum dolor sit amet,
+# consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+#   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+#   comments_counter: 0, likes_counter: 0)
+
+# post3 = Post.create(user_id: 2, title: 'Cats and Dogs 2', text:
+# 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+# Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+# comments_counter: 0, likes_counter: 0)
+
+# comment1 = Comment.create(text: "great", user: user2, post:post1)
+# comment2 = Comment.create(text: "hello", user: user2, post:post2)
+
+# Like.create(user_id: 1, post: post1)
+
 # user1.comments.create!(text: 'Wow', post: post1)
 # user1.comments.create!(text: 'Well Done 👏👏👏', post: post1)
 # user1.comments.create!(text: 'Love 💓 it!!!', post: post1)
