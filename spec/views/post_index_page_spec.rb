@@ -115,4 +115,5 @@ RSpec.describe 'Post Index page', type: :feature do
       click_link selected_post_name
       expect(page).to have_current_path user_post_path(user.id, selected_post.id)
     end
+  end
 end

@@ -76,4 +76,5 @@ RSpec.describe 'User Show page', type: :feature do
       click_link 'See all Posts'
       expect(page).to have_current_path user_posts_path(users[0].id)
     end
+  end
 end
