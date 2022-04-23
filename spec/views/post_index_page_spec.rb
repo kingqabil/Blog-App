@@ -1,81 +1,118 @@
 require 'rails_helper'
 
-RSpec.describe 'Login', type: :feature do
-  describe 'User' do
+RSpec.describe 'Post Index page', type: :feature do
+  describe 'Post Index requirements' do
     before(:each) do
-      @user1 = User.create(name: 'Sadiq Habil', password: '215234', bio: 'I am Software Engineer',
-                           email: 'ingqabil@gmail.com', confirmed_at: Time.now)
-      visit root_path
-      fill_in 'Email', with: 'ingqabil@gmail.com'
-      fill_in 'Password', with: '215234'
+      User.create(
+        name: 'Sadiq Habil',
+        id: 1,
+        email: 'kingqabil@gmail.com',
+        password: '123456',
+        confirmed_at: Time.now,
+        photo: '6087-9404984.png'
+      )
+
+      User.create(
+        name: 'abdi ali',
+        id: 2,
+        email: 'abdiali@yahoo.com',
+        password: '123456',
+        confirmed_at: Time.now,
+        photo: '6087-9404984.png'
+      )
+
+      users = User.all
+      user_name = users[0].name
+      user_id = users[0].id
+      Post.create(author: users[0], title: 'testing this link', text: 'just testing', likescounter: 0,
+                  commentscounter: 0)
+      post = Post.find_by(title: 'testing this link')
+      6.times do |_post|
+        Post.create(author: users[0], title: 'testing', text: 'just testing', likescounter: 0, commentscounter: 0)
+      end
+      8.times { |_comment| Comment.create(author: users[1], post: post, text: 'just testing') }
+      10.times { |_like| Like.create(author: users[1], post: post) }
+      visit new_user_session_path
+      fill_in 'user_email', with: 'kingqabil@gmail.com'
+      fill_in 'user_password', with: '123456'
       click_button 'Log in'
-
-      @post1 = Post.create(title: 'To Be',
-                           text: 'The big question is:
-                          "To be or not to be a Ruby programmer"',
-                           comments_counter: 0, likes_counter: 0, user: @user1)
-      @post2 = Post.create(title: 'Hello',
-                           text: 'Why people say HTML
-                           is not a programming language..."',
-                           comments_counter: 0,
-                           likes_counter: 0, user: @user1)
-      @post3 = Post.create(title: 'Hey',
-                           text: 'With the clif hanger seen in
-                           the first half of season 4, do you think..."',
-                           comments_counter: 0,
-                           likes_counter: 0, user: @user1)
-
-      @comment1 = Comment.create(text: 'This is the first comment for the first post', user: User.first,
-                                 post: Post.first)
-      @comment2 = Comment.create(text: 'This is the second comment', user: User.first, post: Post.first)
-      @comment3 = Comment.create(text: 'This is the third comment', user: User.first, post: Post.first)
-
-      visit user_posts_path(@user1)
+      visit root_path
+      click_link user_name
+      visit user_path(user_id)
+      click_link 'See all Posts'
+      visit user_posts_path(user_id)
     end
 
-    it 'shows user photo' do
-      image = page.all('img')
-      expect(image.size).to eql(1)
+    it 'Log In, click on the first user, click on all posts and see user image' do
+      users_img = page.all('img')
+      expect(users_img.length).to eql(1)
     end
 
-    it 'shows the users username' do
-      expect(page).to have_content('Sadiq Habil')
+    it 'Log In, click on the first user, click on all posts and see user name' do
+      users = User.all
+      user_name = users[0].name
+      expect(page).to have_content(user_name)
     end
 
-    it 'length of posts' do
-      post = Post.all
-      expect(post.size).to eql(3)
+    it 'Log In, click on the first user, click on all posts and see user posts count' do
+      users = User.all
+      user = users[0]
+      expect(page).to have_content(user.postscounter)
     end
 
-    it 'shows number of posts by user' do
-      user = User.first
-      expect(page).to have_content(user.posts_counter)
+    it 'Log In, click on the first user, click on all posts and see all usesr posts title' do
+      users = User.all
+      user = users[0]
+      posts = user.posts
+      posts.each do |post|
+        expect(page).to have_content(post.title)
+      end
     end
 
-    it 'shows posts title' do
-      expect(page).to have_content('To Be')
-      visit user_session_path
+    it 'Log In, click on the first user, click on all posts and see all users posts text' do
+      users = User.all
+      user = users[0]
+      posts = user.posts
+      posts.each do |post|
+        expect(page).to have_content(post.text)
+      end
     end
 
-    it 'can see some of the post\'s body.' do
-      expect(page).to have_content 'The big question is: "To be or not to be a Ruby programmer"'
+    it 'Log In, click on the first user, click on all posts and see first 5 comments of users posts' do
+      users = User.all
+      user = users[0]
+      posts = user.posts
+      posts.each do |post|
+        post.comment_5_recent.each do |comment|
+          expect(page).to have_content(comment.text)
+        end
+      end
     end
 
-    it 'can see the first comments on a post' do
-      expect(page).to have_content 'This is the first comment for the first post'
+    it 'Log In, click on the first user, click on all posts and see all comments count on each post' do
+      users = User.all
+      user = users[0]
+      posts = user.posts
+      posts.each do |post|
+        expect(page).to have_content(post.commentscounter)
+      end
     end
 
-    it 'can see how many comments a post has.' do
-      post = Post.first
-      expect(page).to have_content(post.comments_counter)
+    it 'Log In, click on the first user, click on all posts and see all likes count on each post' do
+      users = User.all
+      user = users[0]
+      posts = user.posts
+      posts.each do |post|
+        expect(page).to have_content(post.likescounter)
+      end
     end
 
-    it 'can see how many likes a post has.' do
-      post = Post.first
-      expect(page).to have_content(post.likes_counter)
-    end
-
-    it 'When I click on a post, it redirects me to that post\'s show page.' do
-      expect(page).to have_content 'Why people say HTML is not a programming language...'
+    it 'Log In, click on the first user, click on all posts and see all likes count on each post' do
+      users = User.all
+      user = users[0]
+      selected_post = Post.find_by(title: 'testing this link')
+      selected_post_name = selected_post.title
+      click_link selected_post_name
+      expect(page).to have_current_path user_post_path(user.id, selected_post.id)
     end
 end

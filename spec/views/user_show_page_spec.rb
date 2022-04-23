@@ -1,64 +1,79 @@
 require 'rails_helper'
 
-RSpec.describe 'Login', type: :feature do
-  describe 'User' do
+RSpec.describe 'User Show page', type: :feature do
+  describe 'User Show requirements' do
     before(:each) do
-      @user1 = User.create(name: 'Sadiq Habil', password: '215234', bio: 'I am Software Engineer',
-                           email: 'ingqabil@gmail.com', confirmed_at: Time.now)
-      visit root_path
-      fill_in 'Email', with: 'ingqabil@gmail.com'
-      fill_in 'Password', with: '215234'
+      User.create(
+        name: 'Sadiq Habil',
+        id: 1,
+        email: 'kingqabil@gmail.com',
+        password: '123456',
+        confirmed_at: Time.now,
+        photo: '6087-9404984.png'
+      )
+
+      User.create(
+        name: 'abdi ali',
+        id: 2,
+        email: 'abdiali@yahoo.com',
+        password: '123456',
+        confirmed_at: Time.now,
+        photo: '6087-9404984.png'
+      )
+
+      users = User.all
+      user_name = users[0].name
+      user_id = users[0].id
+      # Post.create(author: users[0], title: 'testing', text: 'just testing', likescounter: 0, commentscounter:0)
+      6.times do |_post|
+        Post.create(author: users[0], title: 'testing', text: 'just testing', likescounter: 0, commentscounter: 0)
+      end
+      visit new_user_session_path
+      fill_in 'user_email', with: 'kingqabil@gmail.com'
+      fill_in 'user_password', with: '123456'
       click_button 'Log in'
-
-      @post1 = Post.create(title: 'To Be',
-                           text: 'The big question is: "To be or not to be a Ruby programmer"',
-                           comments_counter: 0,
-                           likes_counter: 0, user: @user1)
-      @post2 = Post.create(title: 'Hello',
-                           text: 'Why people say HTML is not a programming language..."',
-                           comments_counter: 0,
-                           likes_counter: 0, user: @user1)
-      @post3 = Post.create(title: 'Hey',
-                           text: 'With the clif hanger seen in the
-                           first half of season 4, do you think..."',
-                           comments_counter: 0,
-                           likes_counter: 0,
-                           user: @user1)
-
-      visit user_path(@user1.id)
+      visit root_path
+      click_link user_name
+      visit user_path(user_id)
     end
 
-    it 'shows photo' do
-      image = page.all('img')
-      expect(image.size).to eql(1)
+    it 'Log In, click on a user and see user image' do
+      users_img = page.all('img')
+      expect(users_img.length).to eql(1)
     end
 
-    it 'shows the username' do
-      expect(page).to have_content('Sadiq Habil')
+    it 'Log In, click on a user and see user name' do
+      users = User.all
+      user_name = users[0].name
+      expect(page).to have_content(user_name)
     end
 
-    it 'shows number of posts for each user' do
-      user = User.first
-      expect(page).to have_content(user.posts_counter)
+    it 'Log In, click on a user and see number of user posts' do
+      users = User.all
+      user = users[0]
+      expect(page).to have_content(user.postscounter)
     end
 
-    it 'shows the users bio' do
-      expect(page).to have_content('I am Software Engineer')
-      visit user_session_path
+    it 'Log In, click on a user and see first 3 posts' do
+      users = User.all
+      user = users[0]
+      recent_post = user.recent3_posts
+      recent_post.each do |post|
+        expect(page).to have_content(post.title)
+      end
     end
 
-    it 'Should see the user\'s first 3 posts.' do
-      expect(page).to have_content 'The big question is: "To be or not to be a Ruby programmer"'
-      expect(page).to have_content 'Why people say HTML is not a programming language...'
-      expect(page).to have_content 'With the clif hanger seen in the first half of season 4, do you think...'
+    it 'Log In, click on a user and see link to view all posts' do
+      expect(page).to have_content('See all Posts')
     end
 
-    it 'Can see a button that lets me view all of a users posts' do
-      expect(page).to have_content('See all post')
+    it 'Log In, click on a user and see link to view all posts' do
+      expect(page).to have_content('See all Posts')
     end
 
-    it 'When I click to see all posts, it redirects me to the users posts index page.' do
-      click_link 'See all posts'
-      expect(page).to have_current_path user_posts_path(@user1)
+    it 'Log In, click on a user and click on link to view all posts' do
+      users = User.all
+      click_link 'See all Posts'
+      expect(page).to have_current_path user_posts_path(users[0].id)
     end
 end
